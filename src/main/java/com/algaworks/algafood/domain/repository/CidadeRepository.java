@@ -7,9 +7,9 @@ import com.algaworks.algafood.domain.model.Restaurante;
 
 public interface CidadeRepository {
 
-	List<Cidade> todas();
-	Cidade porId(Long id);
-	Cidade adicionar(Cidade cidade);
-	void remover(Cidade cidade);
+	List<Cidade> listar();
+	Cidade buscar(Long id);
+	Cidade salvar(Cidade cidade);
+	void remover(Long id);
 	
 }
