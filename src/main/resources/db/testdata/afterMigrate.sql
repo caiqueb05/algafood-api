@@ -1,13 +1,44 @@
+set foreign_key_checks = 0;
+
+delete from cidade;
+delete from cozinha;
+delete from estado;
+delete from forma_pagamento;
+delete from grupo;
+delete from grupo_permissao;
+delete from permissao;
+delete from produto;
+delete from restaurante;
+delete from restaurante_forma_pagamento;
+delete from usuario;
+delete from usuario_grupo;
+
+set foreign_key_checks = 0;
+
+alter table cidade auto_increment = 1;
+alter table cozinha auto_increment = 1;
+alter table estado auto_increment = 1;
+alter table forma_pagamento auto_increment = 1;
+alter table grupo auto_increment = 1;
+alter table permissao auto_increment = 1;
+alter table produto auto_increment = 1;
+alter table restaurante auto_increment = 1;
+alter table usuario auto_increment = 1;
+
 insert into cozinha (id, nome) values (1, 'Tailandesa');
 insert into cozinha (id, nome) values (2, 'Indiana');
 insert into cozinha (id, nome) values (3, 'Argentina');
 insert into cozinha (id, nome) values (4, 'Brasileira');
 
-insert into estado (id, nome) values (1, 'são paulo')
-insert into estado (id, nome) values (2, 'rio de janeiro')
+insert into estado (id, nome) values (1, 'Minas Gerais');
+insert into estado (id, nome) values (2, 'São Paulo');
+insert into estado (id, nome) values (3, 'Ceará');
 
-insert into cidade (id, nome, estado_id) values (1, 'atibaia', 1)
-insert into cidade (id, nome, estado_id) values (2, 'braganca paulista', 2)
+insert into cidade (id, nome, estado_id) values (1, 'Uberlândia', 1);
+insert into cidade (id, nome, estado_id) values (2, 'Belo Horizonte', 1);
+insert into cidade (id, nome, estado_id) values (3, 'São Paulo', 2);
+insert into cidade (id, nome, estado_id) values (4, 'Campinas', 2);
+insert into cidade (id, nome, estado_id) values (5, 'Fortaleza', 3);
 
 insert into restaurante (id, nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_cidade_id, endereco_cep, endereco_logradouro, endereco_numero, endereco_bairro) values (1, 'Madero', 15, 1, utc_timestamp, utc_timestamp, 1, '12944-290', 'Rua João Pinheiro', '1000', 'Centro');
 insert into restaurante (id, nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values (2, 'Outback', 10, 2, utc_timestamp, utc_timestamp);
@@ -16,9 +47,9 @@ insert into restaurante (id, nome, taxa_frete, cozinha_id, data_cadastro, data_a
 insert into restaurante (id, nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values (5, 'Lanchonete do Tio Sam', 11, 4, utc_timestamp, utc_timestamp);
 insert into restaurante (id, nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values (6, 'Bar da Maria', 6, 4, utc_timestamp, utc_timestamp);
 
-insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (1, 'salada', 'alface e tomate', 20, 1, 1)
-insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (2, 'prato feito', 'arroz, feijão e carne', 30, 1, 1)
-insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (3, 'massa', 'talharim ao molho branco', 27, 1, 2)
+insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (1, 'salada', 'alface e tomate', 20, 1, 1);
+insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (2, 'prato feito', 'arroz, feijão e carne', 30, 1, 1);
+insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (3, 'massa', 'talharim ao molho branco', 27, 1, 2);
 insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (4, 'Porco com molho agridoce', 'Deliciosa carne suína ao molho especial', 78.90, 1, 1);
 insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (5, 'Camarão tailandês', '16 camarões grandes ao molho picante', 110, 1, 1);
 insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (6, 'Salada picante com carne grelhada', 'Salada de folhas com cortes finos de carne bovina grelhada e nosso molho especial de pimenta vermelha', 87.20, 1, 2);
@@ -29,12 +60,12 @@ insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (
 insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (11, 'Sanduíche X-Tudo', 'Sandubão com muito queijo, hamburger bovino, bacon, ovo, salada e maionese', 19, 1, 5);
 insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (12, 'Espetinho de Cupim', 'Acompanha farinha, mandioca e vinagrete', 8, 1, 6);
 
-insert into forma_pagamento (id, descricao) values (1, 'cartão')
-insert into forma_pagamento (id, descricao) values (2, 'pix')
-insert into forma_pagamento (id, descricao) values (3, 'dinheiro')
+insert into forma_pagamento (id, descricao) values (1, 'Cartão');
+insert into forma_pagamento (id, descricao) values (2, 'Pix');
+insert into forma_pagamento (id, descricao) values (3, 'Dinheiro');
 
-insert into permissao (id, nome, descricao) values (1, 'zezinho', 'adm')
-insert into permissao (id, nome, descricao) values (2, 'joaquina', 'financeiro')
-insert into permissao (id, nome, descricao) values (3, 'bastiana', 'rh')
+insert into permissao (id, nome, descricao) values (1, 'Zezinho', 'Adm');
+insert into permissao (id, nome, descricao) values (2, 'Joaquina', 'Financeiro');
+insert into permissao (id, nome, descricao) values (3, 'Bastiana', 'RH');
 
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,1), (1,2), (1,3), (2,3), (3,2), (3,3), (4, 1), (4, 2), (5, 1), (5, 2), (6, 3);
